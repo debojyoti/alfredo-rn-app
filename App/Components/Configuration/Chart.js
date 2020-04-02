@@ -104,7 +104,7 @@ export default class Chart extends Component {
     return (
       <View style={{ flexDirection: 'row' }}>
         <View style={Styles.packView}>
-          <Text style={Styles.btnTxt}>{item}</Text>
+          <Text style={Styles.btnTxt}>{item.time}</Text>
         </View>
         {index === arrayLength ? (
           <View style={Styles.AddButtonView}>
@@ -269,7 +269,7 @@ export default class Chart extends Component {
             keyExtractor={item => {
               return item.id;
             }}
-            renderItem={item => this.renderItem(item)}
+            renderItem={this.renderItem}
           />
           <LinearGradient
             colors={['#ECAA0D', '#E61EB6']}

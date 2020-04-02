@@ -13,6 +13,7 @@
     "@react-native-community/clipboard": "^1.0.0",
     "native-base": "^2.13.8",
     "react": "16.9.0",
+    "react-devtools": "^3.6.3",
     "react-native": "0.61.5",
     "react-native-app-link": "^1.0.0",
     "react-native-country-picker-modal": "^1.10.0",
