@@ -3,7 +3,7 @@
 ## Environment prerequisite
 
 1) Make sure you have lastest node (v >= 8.x) installed globally
-2) Make sure android tools are installed and abd is configured
+2) Make sure android tools are installed and adb is configured
 3) Make sure react-native-cli is installed globally
 
 ## Development setup steps
