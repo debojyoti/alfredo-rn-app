@@ -53,14 +53,12 @@ export default class Chart extends Component {
 
     ],
     Text3: [
-      { text: 'Costo de desbloqueo', time: '0.009' },
-      { text: 'Min. Sell', time: '0.0048' },
+      { text: 'Costo de desbloqueo', time: '23' },
+      { text: 'Min. Venta o retiro', time: '10' },
 
     ],
     Text4: [
-      { text: '10 ventas', time: '1' },
-      { text: '20 ventas', time: '1' },
-      
+      { text: 'Minimo de personas cada 10 ventas 1 referido', time: '1' }
     ],
 
     Text5: [
@@ -79,22 +77,22 @@ export default class Chart extends Component {
     checked1: true,
     checked2: true,
     packArr: [
-     {time: '10'},
-     {time: '30'},
-     {time: '80'},
-     {time: '100'},
-     {time: '200'},
-     {time: '400'},
-     {time: '600'},
-     {time: '800'},
-     {time: '1000'},
-     {time: '1200'},
-     {time: '1400'},
-     {time: '1600'},
-     {time: '1800'},
-     {time: '2000'},
-     {time: '2200'},
-     {time: '2400'},,
+      {time: '10'},
+      {time: '20'},
+      {time: '30'},
+      {time: '60'},
+      {time: '100'},
+      {time: '200'},
+      {time: '400'},
+      {time: '600'},
+      {time: '800'},
+      {time: '1000'},
+      {time: '1200'},
+      {time: '1400'},
+      {time: '1800'},
+      {time: '2000'},
+      {time: '2200'},
+      {time: '2400'},,
     ],
   };
   renderItem = post => {
@@ -221,12 +219,12 @@ export default class Chart extends Component {
             ))}
           </View>
 
-          <View style={Styles.checkboxParentView}>
-            <View style={Styles.LeftView}>
-              <Text style={Styles.smallFont}>cantidad máxima para pasar al available(compra o comisiones red)</Text>
-
+          <View style={[Styles.checkboxParentView, {width: "100%", paddingTop: 30}]}>
+            <View style={[Styles.LeftView, { width: "100%" }]}>
+            <Text style={Styles.smallFont}>cantidad máxima para pasar al available</Text>
+            <Text style={Styles.smallFont}>(compra o comisiones red)</Text>
               <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
-              <View style={Styles.TopCheckBoxView}>
+              <View style={[Styles.TopCheckBoxView, {width: "47%", marginLeft: "37%"}]}>
                 <Checkbox
                   status={this.state.checked1 ? 'checked' : 'unchecked'}
                   onPress={() => {
@@ -234,7 +232,7 @@ export default class Chart extends Component {
                   }}
                   color={TextColor}
                 />
-                <Text style={Styles.TopText}>current pack</Text>
+                <Text style={Styles.TopText}>Paquete actual</Text>
               </View>
               <View style={Styles.TopCheckBoxView}>
                 <Checkbox
@@ -244,7 +242,7 @@ export default class Chart extends Component {
                   }}
                   color={TextColor}
                 />
-                <Text style={Styles.TopText}>current %</Text>
+                <Text style={Styles.TopText}>Porcentaje actual</Text>
               </View>
               </View>
 
@@ -258,19 +256,21 @@ export default class Chart extends Component {
             </View> */}
           </View>
           
-          <Text style={[Styles.smallFont, { marginTop: 5, marginRight: '85%' }]}>
-            Pack
+          <View style={Styles.packWrapper}>
+          <Text style={[Styles.mediumFont, { marginTop: 25, marginRight: '65%', width: "80%", fontWeight: "bold"}]}>
+            Paquetes:
           </Text>
 
           <FlatList
             data={this.state.packArr}
-            numColumns={6}
+            numColumns={4}
             showsVerticalScrollIndicator={false}
             keyExtractor={item => {
               return item.id;
             }}
             renderItem={this.renderItem}
           />
+          </View>
           <LinearGradient
             colors={['#ECAA0D', '#E61EB6']}
             start={{ x: 0, y: 1 }}
@@ -303,6 +303,15 @@ const Styles = StyleSheet.create({
   smallFont: {
     color: TextColor,
     fontSize: responsiveFontSize(1.8),
+    textAlign: 'center',
+    padding: 0,
+    flex:1,
+    margin: 0,
+    borderWidth: 0,
+  },
+  mediumFont: {
+    color: TextColor,
+    fontSize: responsiveFontSize(2.1),
     textAlign: 'center',
     padding: 0,
     flex:1,
@@ -434,5 +443,9 @@ const Styles = StyleSheet.create({
   },
   btnTxt:{
     fontSize:responsiveFontSize(1.7)
+  },
+  packWrapper: {
+    width: "100%",
+    alignItems: "center"
   }
 });
