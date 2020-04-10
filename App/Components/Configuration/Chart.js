@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import LinearGradient from 'react-native-linear-gradient';
+import React, { Component } from "react";
+import LinearGradient from "react-native-linear-gradient";
 
 import {
   Text,
@@ -7,108 +7,115 @@ import {
   ScrollView,
   StyleSheet,
   FlatList,
-  TextInput,
-} from 'react-native';
+  TextInput
+} from "react-native";
 import {
   responsiveWidth,
   responsiveHeight,
-  responsiveFontSize,
-} from 'react-native-responsive-dimensions';
-import { TextColor, White, LightBackground } from '../../Globals/colors';
-import { Button, Checkbox } from 'react-native-paper';
+  responsiveFontSize
+} from "react-native-responsive-dimensions";
+import { TextColor, White, LightBackground } from "../../Globals/colors";
+import { Button, Checkbox } from "react-native-paper";
 
 export default class Chart extends Component {
   state = {
     profitLevel: [
-      { no: 1, percent: '10%' },
-      { no: 2, percent: '4%' },
-      { no: 3, percent: '4%' },
-      { no: 4, percent: '2%' },
-      { no: 5, percent: '2%' },
-      { no: 6, percent: '2%' },
-      { no: 7, percent: '2%' },
-      { no: 8, percent: '2%' },
-      { no: 9, percent: '2%' },
-      { no: 10, percent: '2%' },
+      { no: 1, percent: "10%" },
+      { no: 2, percent: "4%" },
+      { no: 3, percent: "4%" },
+      { no: 4, percent: "2%" },
+      { no: 5, percent: "2%" },
+      { no: 6, percent: "2%" },
+      { no: 7, percent: "2%" },
+      { no: 8, percent: "2%" },
+      { no: 9, percent: "2%" },
+      { no: 10, percent: "2%" }
     ],
     MinimumLevel: [
-      { no: 1, percent: '1' },
-      { no: 2, percent: '1' },
-      { no: 3, percent: '1' },
-      { no: 4, percent: '1' },
-      { no: 5, percent: '1' },
-      { no: 6, percent: '1' },
-      { no: 7, percent: '1' },
-      { no: 8, percent: '1' },
-      { no: 9, percent: '1' },
-      { no: 10, percent: '1' },
+      { no: 1, percent: "1" },
+      { no: 2, percent: "1" },
+      { no: 3, percent: "1" },
+      { no: 4, percent: "1" },
+      { no: 5, percent: "1" },
+      { no: 6, percent: "1" },
+      { no: 7, percent: "1" },
+      { no: 8, percent: "1" },
+      { no: 9, percent: "1" },
+      { no: 10, percent: "1" }
     ],
     Text: [
-      { text: '% de 1-4 venta', time: '25' },
-      { text: '% depues de 4ta venta', time: '6' },
+      { text: "% de 1-4 venta", time: "25" },
+      { text: "% depues de 4ta venta", time: "6" }
     ],
     Text2: [
-      { text: 'Maduracion de compra', time:   '7' },
-      { text: 'Tiempo de envio USDT', time: '48' },
-
+      { text: "Maduracion de compra", time: "7" },
+      { text: "Tiempo de envio USDT", time: "48" }
     ],
     Text3: [
-      { text: 'Costo de desbloqueo', time: '23' },
-      { text: 'Min. Venta o retiro', time: '10' },
-
+      { text: "Costo de desbloqueo", time: "23" },
+      { text: "Min. Venta o retiro", time: "10" }
     ],
     Text4: [
-      { text: 'Minimo de personas cada 10 ventas 1 referido', time: '1' }
+      { text: "Minimo de personas cada 10 ventas 1 referido", time: "1" }
     ],
 
-    Text5: [
-      { text: '30 ventas', time: '1' },
-      { text: '40 ventas', time: '1' },
-      
-    ],
-    Text6: [
-      { text: '50 ventas', time: '1' },
-      { text: '60 ventas', time: '1' },
-      
-    ],
+    Text5: [{ text: "30 ventas", time: "1" }, { text: "40 ventas", time: "1" }],
+    Text6: [{ text: "50 ventas", time: "1" }, { text: "60 ventas", time: "1" }],
     Text7: [
-      { text: 'Direccion USDT para desbloqueo', time: '1xgd74gd4gdfg87dfggr' },
+      { text: "Direccion USDT para desbloqueo", time: "1xgd74gd4gdfg87dfggr" }
     ],
     checked1: true,
     checked2: true,
     packArr: [
-      {time: '10'},
-      {time: '20'},
-      {time: '30'},
-      {time: '60'},
-      {time: '100'},
-      {time: '200'},
-      {time: '400'},
-      {time: '600'},
-      {time: '800'},
-      {time: '1000'},
-      {time: '1200'},
-      {time: '1400'},
-      {time: '1800'},
-      {time: '2000'},
-      {time: '2200'},
-      {time: '2400'},,
-    ],
+      { time: "10", packId: 1 },
+      { time: "20", packId: 2 },
+      { time: "30", packId: 3 },
+      { time: "60", packId: 4 },
+      { time: "100", packId: 5 },
+      { time: "200", packId: 6 },
+      { time: "400", packId: 7 },
+      { time: "600", packId: 8 },
+      { time: "800", packId: 9 },
+      { time: "1000", packId: 10 },
+      { time: "1200", packId: 11 },
+      { time: "1400", packId: 12 },
+      { time: "1800", packId: 13 },
+      { time: "2000", packId: 14 },
+      { time: "2200", packId: 15 },
+      { time: "2400", packId: 16 },
+      ,
+    ]
   };
+
+  _updatePackValue = (item, updatedTime) => {
+    const { packArr } = this.state;
+    const pack = packArr.find(i => i.packId === item.packId)
+    pack.time = updatedTime
+    this.setState({ packArr });
+  }
+
   renderItem = post => {
     const item = post.item;
     const index = post.index;
     let arrayLength = this.state.packArr.length - 1;
     return (
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: "row" }}>
         <View style={Styles.packView}>
-          <Text style={Styles.btnTxt}>{item.time}</Text>
+          {/* <Text style={Styles.btnTxt}>{item.time}</Text> */}
+          <TextInput
+            placeholder={item.percent}
+            placeholderTextColor={TextColor}
+            style={Styles.extraSmallFont}
+            value={item.time}
+            onChangeText={updatedTime => this._updatePackValue(item, updatedTime)}
+          />
         </View>
         {index === arrayLength ? (
           <View style={Styles.AddButtonView}>
             <Text
-              style={[Styles.smallFont, { color: 'blue', fontWeight: 'bold' }]}>
-              {' '}
+              style={[Styles.smallFont, { color: "blue", fontWeight: "bold" }]}
+            >
+              {" "}
               + New Pack
             </Text>
           </View>
@@ -120,24 +127,27 @@ export default class Chart extends Component {
     return (
       <View style={Styles.container}>
         <ScrollView>
-          <Text style={[Styles.smallFont, { marginTop: 5 }]}>
-            Profit Level
-          </Text>
+          <Text style={[Styles.smallFont, { marginTop: 5 }]}>Profit Level</Text>
           <View style={Styles.profitLevelView}>
             {this.state.profitLevel.map(item => (
               <View>
                 <View style={Styles.profitNested1}>
-                  <Text style={[Styles.smallFont, { fontWeight: 'bold' }]}>
+                  <Text style={[Styles.smallFont, { fontWeight: "bold" }]}>
                     {item.no}
                   </Text>
                 </View>
                 <View
                   style={{
-                    backgroundColor: 'white',
+                    backgroundColor: "white"
                     // width: responsiveWidth(9),
                     // height: responsiveHeight(4),
-                  }}>
-                  <TextInput placeholder={item.percent} placeholderTextColor={TextColor} style={Styles.extraSmallFont} />
+                  }}
+                >
+                  <TextInput
+                    placeholder={item.percent}
+                    placeholderTextColor={TextColor}
+                    style={Styles.extraSmallFont}
+                  />
                 </View>
               </View>
             ))}
@@ -149,17 +159,22 @@ export default class Chart extends Component {
             {this.state.MinimumLevel.map(item => (
               <View>
                 <View style={Styles.profitNested1}>
-                  <Text style={[Styles.smallFont, { fontWeight: 'bold' }]}>
+                  <Text style={[Styles.smallFont, { fontWeight: "bold" }]}>
                     {item.no}
                   </Text>
                 </View>
                 <View
                   style={{
-                    backgroundColor: 'white',
+                    backgroundColor: "white"
                     // width: responsiveWidth(9),
                     // height: responsiveHeight(4),
-                  }}>
-                  <TextInput placeholder={item.percent} placeholderTextColor={TextColor} style={Styles.extraSmallFont} />
+                  }}
+                >
+                  <TextInput
+                    placeholder={item.percent}
+                    placeholderTextColor={TextColor}
+                    style={Styles.extraSmallFont}
+                  />
                 </View>
               </View>
             ))}
@@ -170,12 +185,17 @@ export default class Chart extends Component {
                 <Text
                   style={[
                     Styles.smallFont,
-                    { paddingVertical:5, color: TextColor },
-                  ]}>
+                    { paddingVertical: 5, color: TextColor }
+                  ]}
+                >
                   {item.text}
                 </Text>
                 <View style={Styles.TimeView}>
-                  <TextInput placeholder ={item.time} placeholderTextColor={TextColor} style={[Styles.smallFont]}/>
+                  <TextInput
+                    placeholder={item.time}
+                    placeholderTextColor={TextColor}
+                    style={[Styles.smallFont]}
+                  />
                 </View>
               </View>
             ))}
@@ -183,11 +203,20 @@ export default class Chart extends Component {
           <View style={Styles.TextParentView}>
             {this.state.Text2.map(item => (
               <View style={Styles.MainTextView}>
-                <Text style={[Styles.smallFont, { paddingVertical:5, color: TextColor }]}>
+                <Text
+                  style={[
+                    Styles.smallFont,
+                    { paddingVertical: 5, color: TextColor }
+                  ]}
+                >
                   {item.text}
                 </Text>
                 <View style={Styles.TimeView}>
-                  <TextInput  placeholder = {item.time} placeholderTextColor={TextColor} style={[Styles.smallFont]}/>
+                  <TextInput
+                    placeholder={item.time}
+                    placeholderTextColor={TextColor}
+                    style={[Styles.smallFont]}
+                  />
                 </View>
               </View>
             ))}
@@ -196,11 +225,20 @@ export default class Chart extends Component {
           <View style={Styles.TextParentView}>
             {this.state.Text3.map(item => (
               <View style={Styles.MainTextView}>
-                <Text style={[Styles.smallFont, { paddingVertical:5, color: TextColor }]}>
+                <Text
+                  style={[
+                    Styles.smallFont,
+                    { paddingVertical: 5, color: TextColor }
+                  ]}
+                >
                   {item.text}
                 </Text>
                 <View style={Styles.TimeView}>
-                  <TextInput  placeholder = {item.time} placeholderTextColor={TextColor} style={[Styles.smallFont]}/>
+                  <TextInput
+                    placeholder={item.time}
+                    placeholderTextColor={TextColor}
+                    style={[Styles.smallFont]}
+                  />
                 </View>
               </View>
             ))}
@@ -209,44 +247,63 @@ export default class Chart extends Component {
           <View style={Styles.TextParentView}>
             {this.state.Text4.map(item => (
               <View style={Styles.MainTextView}>
-                <Text style={[Styles.smallFont, { paddingVertical:5, color: TextColor }]}>
+                <Text
+                  style={[
+                    Styles.smallFont,
+                    { paddingVertical: 5, color: TextColor }
+                  ]}
+                >
                   {item.text}
                 </Text>
                 <View style={Styles.TimeViewLarge}>
-                  <TextInput  placeholder = {item.time} placeholderTextColor={TextColor} style={[Styles.smallFont]}/>
+                  <TextInput
+                    placeholder={item.time}
+                    placeholderTextColor={TextColor}
+                    style={[Styles.smallFont]}
+                  />
                 </View>
               </View>
             ))}
           </View>
 
-          <View style={[Styles.checkboxParentView, {width: "100%", paddingTop: 30}]}>
+          <View
+            style={[
+              Styles.checkboxParentView,
+              { width: "100%", paddingTop: 30 }
+            ]}
+          >
             <View style={[Styles.LeftView, { width: "100%" }]}>
-            <Text style={Styles.smallFont}>cantidad máxima para pasar al available</Text>
-            <Text style={Styles.smallFont}>(compra o comisiones red)</Text>
-              <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
-              <View style={[Styles.TopCheckBoxView, {width: "47%", marginLeft: "37%"}]}>
-                <Checkbox
-                  status={this.state.checked1 ? 'checked' : 'unchecked'}
-                  onPress={() => {
-                    this.setState({ checked1: !this.state.checked1 });
-                  }}
-                  color={TextColor}
-                />
-                <Text style={Styles.TopText}>Paquete actual</Text>
+              <Text style={Styles.smallFont}>
+                cantidad máxima para pasar al available
+              </Text>
+              <Text style={Styles.smallFont}>(compra o comisiones red)</Text>
+              <View style={{ flexDirection: "row", alignSelf: "center" }}>
+                <View
+                  style={[
+                    Styles.TopCheckBoxView,
+                    { width: "47%", marginLeft: "37%" }
+                  ]}
+                >
+                  <Checkbox
+                    status={this.state.checked1 ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked1: !this.state.checked1 });
+                    }}
+                    color={TextColor}
+                  />
+                  <Text style={Styles.TopText}>Paquete actual</Text>
+                </View>
+                <View style={Styles.TopCheckBoxView}>
+                  <Checkbox
+                    status={this.state.checked2 ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked2: !this.state.checked2 });
+                    }}
+                    color={TextColor}
+                  />
+                  <Text style={Styles.TopText}>Porcentaje actual</Text>
+                </View>
               </View>
-              <View style={Styles.TopCheckBoxView}>
-                <Checkbox
-                  status={this.state.checked2 ? 'checked' : 'unchecked'}
-                  onPress={() => {
-                    this.setState({ checked2: !this.state.checked2 });
-                  }}
-                  color={TextColor}
-                />
-                <Text style={Styles.TopText}>Porcentaje actual</Text>
-              </View>
-              </View>
-
-
             </View>
             {/* <View style={Styles.RightView}>
               <Text style={Styles.smallFont}>Payment Address Unlocking</Text>
@@ -255,38 +312,50 @@ export default class Chart extends Component {
               </View>
             </View> */}
           </View>
-          
-          <View style={Styles.packWrapper}>
-          <Text style={[Styles.mediumFont, { marginTop: 25, marginRight: '65%', width: "80%", fontWeight: "bold"}]}>
-            Paquetes:
-          </Text>
 
-          <FlatList
-            data={this.state.packArr}
-            numColumns={4}
-            showsVerticalScrollIndicator={false}
-            keyExtractor={item => {
-              return item.id;
-            }}
-            renderItem={this.renderItem}
-          />
+          <View style={Styles.packWrapper}>
+            <Text
+              style={[
+                Styles.mediumFont,
+                {
+                  marginTop: 25,
+                  marginRight: "65%",
+                  width: "80%",
+                  fontWeight: "bold"
+                }
+              ]}
+            >
+              Paquetes:
+            </Text>
+
+            <FlatList
+              data={this.state.packArr}
+              numColumns={4}
+              showsVerticalScrollIndicator={false}
+              keyExtractor={item => {
+                return item.id;
+              }}
+              renderItem={this.renderItem}
+            />
           </View>
           <LinearGradient
-            colors={['#ECAA0D', '#E61EB6']}
+            colors={["#ECAA0D", "#E61EB6"]}
             start={{ x: 0, y: 1 }}
             end={{ x: 1, y: 1 }}
-            style={Styles.LinearGradientSellButton}>
+            style={Styles.LinearGradientSellButton}
+          >
             <Button
               style={Styles.GivetButton}
               onPress={() => {
-                this.setState({ visibleReduceBalance: 'fancy' });
+                this.setState({ visibleReduceBalance: "fancy" });
               }}
               contentStyle={{ height: responsiveHeight(6) }}
               labelStyle={{
                 color: LightBackground,
-                fontWeight: 'bold',
-                fontSize: responsiveFontSize(1.3),
-              }}>
+                fontWeight: "bold",
+                fontSize: responsiveFontSize(1.3)
+              }}
+            >
               Save
             </Button>
           </LinearGradient>
@@ -297,26 +366,26 @@ export default class Chart extends Component {
 }
 const Styles = StyleSheet.create({
   container: {
-    width: '90%',
-    alignSelf: 'center',
+    width: "90%",
+    alignSelf: "center"
   },
   smallFont: {
     color: TextColor,
     fontSize: responsiveFontSize(1.8),
-    textAlign: 'center',
+    textAlign: "center",
     padding: 0,
-    flex:1,
+    flex: 1,
     margin: 0,
-    borderWidth: 0,
+    borderWidth: 0
   },
   mediumFont: {
     color: TextColor,
     fontSize: responsiveFontSize(2.1),
-    textAlign: 'center',
+    textAlign: "center",
     padding: 0,
-    flex:1,
+    flex: 1,
     margin: 0,
-    borderWidth: 0,
+    borderWidth: 0
   },
   extraSmallFont: {
     color: TextColor,
@@ -325,29 +394,28 @@ const Styles = StyleSheet.create({
     margin: 0,
     borderWidth: 0,
     height: responsiveHeight(4),
-    textAlign:'center'
-
+    textAlign: "center"
   },
   profitLevelView: {
-    marginTop:5,
-    flexDirection: 'row',
+    marginTop: 5,
+    flexDirection: "row"
   },
   profitNested1: {
-    backgroundColor: 'rgb(210,210,210)',
+    backgroundColor: "rgb(210,210,210)",
     borderRightColor: White,
     borderRightWidth: 0.5,
     width: responsiveWidth(9),
-    height: responsiveHeight(4),
+    height: responsiveHeight(4)
   },
   MinimumLevelView: {
-    marginTop:5,
-    flexDirection: 'row',
+    marginTop: 5,
+    flexDirection: "row"
   },
   TextParentView: {
-    marginTop:5,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    marginTop: 5,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   TimeView: {
     width: responsiveWidth(35),
@@ -356,7 +424,7 @@ const Styles = StyleSheet.create({
     // alignItems: 'center',
     borderRadius: 8,
     backgroundColor: White,
-    elevation: 3,
+    elevation: 3
   },
   TimeViewLarge: {
     width: responsiveWidth(60),
@@ -365,84 +433,85 @@ const Styles = StyleSheet.create({
     // alignItems: 'center',
     borderRadius: 8,
     backgroundColor: White,
-    elevation: 3,
+    elevation: 3
   },
   MainTextView: {
-   flex:1,
-   paddingHorizontal:10,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flex: 1,
+    paddingHorizontal: 10,
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   checkboxParentView: {
-    alignSelf: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 5,
+    alignSelf: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 5
   },
   inputView: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '80%',
+    justifyContent: "center",
+    alignItems: "center",
+    width: "80%",
     height: responsiveHeight(5),
     borderRadius: 8,
     elevation: 5,
     backgroundColor: White,
-    alignSelf: 'center',
+    alignSelf: "center"
   },
   TopCheckBoxView: {
-    width: '85%',
+    width: "85%",
     height: responsiveHeight(6),
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "center"
   },
   TopText: {
     fontSize: responsiveFontSize(2),
     color: TextColor,
-    left: responsiveWidth(2),
+    left: responsiveWidth(2)
   },
   LeftView: {
-    width: '50%',
+    width: "50%"
   },
   RightView: {
-    width: '50%',
+    width: "50%"
   },
   packView: {
     marginTop: responsiveHeight(1),
     width: responsiveWidth(13),
     height: responsiveHeight(5),
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 8,
-    borderColor: 'grey',
+    borderColor: "grey",
     borderWidth: 2,
     marginHorizontal: responsiveWidth(1),
+    backgroundColor: "white"
   },
   AddButtonView: {
     marginTop: responsiveHeight(1),
     width: responsiveWidth(30),
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     height: responsiveHeight(5),
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: 'rgba(0,0,0,0.5)',
+    borderColor: "rgba(0,0,0,0.5)"
   },
   GivetButton: {
-    width: '100%',
-    borderRadius: 8,
+    width: "100%",
+    borderRadius: 8
   },
   LinearGradientSellButton: {
-    alignSelf: 'center',
+    alignSelf: "center",
     marginVertical: responsiveHeight(5),
     marginHorizontal: responsiveWidth(2),
     height: responsiveHeight(6),
-    width: '60%',
-    borderRadius: 8,
+    width: "60%",
+    borderRadius: 8
   },
-  btnTxt:{
-    fontSize:responsiveFontSize(1.7)
+  btnTxt: {
+    fontSize: responsiveFontSize(1.7)
   },
   packWrapper: {
     width: "100%",
