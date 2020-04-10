@@ -2,9 +2,7 @@ export const setUserData = userData => {
   return {
     type: "SET_AUTH_DATA",
     payload: {
-      auth: {
-        token: "TOKEN"
-      }
+      ...userData
     }
   };
 };

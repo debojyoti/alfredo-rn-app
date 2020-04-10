@@ -20,7 +20,12 @@ import {
 import {TextColor, White, LightBackground} from '../../Globals/colors';
 import {Button} from 'react-native-paper';
 import ForgotPassword from './ForgotPassword';
-export default class Login extends Component {
+import { connect } from 'react-redux';
+import { setUserData } from '../../Redux/Actions/auth-data';
+
+
+
+class Login extends Component {
   state = {
     username: '',
     password: '',
@@ -205,3 +210,20 @@ const Styles = StyleSheet.create({
     borderColor: LightBackground,
   },
 });
+
+const mapStateToProps = state => {
+  return {
+    userData: state.userData
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: userData => dispatch(setUserData(userData)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
