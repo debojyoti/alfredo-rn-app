@@ -6,9 +6,11 @@ import hardSet from "redux-persist/es/stateReconciler/hardSet";
 import {
   loaderReducer
 } from "./Reducers/loader";
+import { userDataReducer } from "./Reducers/auth-data";
 
 const rootReducer = combineReducers({
-  loaderData: loaderReducer 
+  loaderData: loaderReducer,
+  userData: userDataReducer 
 });
 
 const persistConfig = {

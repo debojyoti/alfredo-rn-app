@@ -332,9 +332,7 @@ export default class Chart extends Component {
               data={this.state.packArr}
               numColumns={4}
               showsVerticalScrollIndicator={false}
-              keyExtractor={item => {
-                return item.id;
-              }}
+              keyExtractor={item => item.packId}
               renderItem={this.renderItem}
             />
           </View>

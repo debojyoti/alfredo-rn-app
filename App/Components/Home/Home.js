@@ -121,7 +121,7 @@ export default class Login extends Component {
           <View style={Styles.MainView}>
             <FlatList
               data={this.state.DATA}
-              keyExtractor={item => item.id}
+              keyExtractor={item => item.id+""}
               renderItem={item => this.PrintCards(item)}
               contentContainerStyle={Styles.ContainerStyle}
               ItemSeparatorComponent={() => <View style={Styles.Seprator} />}
