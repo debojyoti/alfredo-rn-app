@@ -65,6 +65,7 @@ class Login extends Component {
         }
       } catch (error) {
         Toast.show(error && error.message && error.message.length? error.message: "Login error"); 
+        this._toggleLoader(false);
       }
     }
   };
