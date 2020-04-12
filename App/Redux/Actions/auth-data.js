@@ -1,4 +1,5 @@
 export const setUserData = userData => {
+  console.log('userData :', userData);
   return {
     type: "SET_AUTH_DATA",
     payload: {

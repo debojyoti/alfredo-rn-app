@@ -7,13 +7,24 @@ import {
     responsiveHeight,
     responsiveFontSize,
   } from 'react-native-responsive-dimensions';
+import { store } from "../../Redux/store";
 
 export default class AuthLoading extends Component {
   componentDidMount = () => {
       setTimeout(() => {
-        this.props.navigation.navigate('Login')
+        this._checkIfUserIsAuthenticated();
     }, 1500);
   };
+
+  _checkIfUserIsAuthenticated = () => {
+    const { userData } = store.getState();
+    if (userData && userData.accessToken && userData.accessToken.length) {
+      this.props.navigation.navigate('Home');
+    } else {
+      this.props.navigation.navigate('Login');
+    }
+  }
+
   render() {
     return (
       <LinearGradient

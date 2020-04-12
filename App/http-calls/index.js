@@ -1,12 +1,12 @@
 import { makePostRequest } from "../http-connectors";
 import { BASE_URL } from "../configs";
 
-export const login = (username, password) => {
+export const login = loginData => {
   return new Promise((resolve, reject) => {
     makePostRequest(
-      `${BASE_URL}/login`,
+      `${BASE_URL}/authentication`,
       false,
-      { username, password }
+      loginData
     )
       .then(res => {
         resolve(res);

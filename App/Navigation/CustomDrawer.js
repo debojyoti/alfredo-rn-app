@@ -16,9 +16,17 @@ import {
   responsiveWidth
 } from "react-native-responsive-dimensions";
 import { LightBackground, White } from "../Globals/colors";
+import { store } from "../Redux/store";
+import { clearAuth } from "../Redux/Actions/auth-data";
 
 export default class Drawer extends Component {
   state = {};
+
+  _logout = () => {
+    // Clear storage
+    store.dispatch(clearAuth());
+    this.props.navigation.navigate("Login");
+  }
 
   render() {
     return (
@@ -174,7 +182,7 @@ export default class Drawer extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                this.props.navigation.navigate("Login");
+                this._logout();
               }}
               style={Styles.HomeView}
             >

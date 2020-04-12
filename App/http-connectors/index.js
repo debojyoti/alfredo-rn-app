@@ -51,14 +51,7 @@ export const makeGetRequest = async (
       })
         .then(res => res.json())
         .then(jsonResponse => {
-          console.log("TCL: jsonResponse", jsonResponse);
-
-          if (jsonResponse.error === false) {
-            resolve(jsonResponse);
-          } else {
-            console.log(jsonResponse);
-            reject(jsonResponse);
-          }
+          resolve(jsonResponse);
         })
         .catch(e => {
           console.log("XHR GET Error: ", e);
@@ -107,12 +100,7 @@ export const makePostRequest = async (
         .then(
           jsonResponse => {
             console.log("TCL: jsonResponse", jsonResponse);
-            if (jsonResponse.error === false) {
-              resolve(jsonResponse);
-            } else {
-              console.log(jsonResponse);
-              reject(jsonResponse);
-            }
+            resolve(jsonResponse);
           },
           error => {
             reject(error);
@@ -160,12 +148,7 @@ export const makePutRequest = async (url, attachToken = false, params = {}) => {
         .then(
           jsonResponse => {
             console.log("TCL: jsonResponse", jsonResponse);
-            if (jsonResponse.error === false) {
-              resolve(jsonResponse);
-            } else {
-              console.log(jsonResponse);
-              reject(jsonResponse);
-            }
+            resolve(jsonResponse);
           },
           error => {
             reject(error);
