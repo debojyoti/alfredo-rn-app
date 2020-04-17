@@ -30,7 +30,8 @@ export const makeGetRequest = async (
   }
   let headers = {
     Accept: "application/json",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "X-Requested-With": "XMLHttpRequest"
   };
   if (attachToken) {
     try {
@@ -71,7 +72,8 @@ export const makePostRequest = async (
 ) => {
   let headers = {
     Accept: "application/json",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "X-Requested-With": "XMLHttpRequest"
   };
   if (attachToken) {
     try {
