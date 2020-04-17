@@ -7,10 +7,12 @@ import {
   loaderReducer
 } from "./Reducers/loader";
 import { userDataReducer } from "./Reducers/auth-data";
+import { balanceDataReducer } from "./Reducers/balance-data";
 
 const rootReducer = combineReducers({
   loaderData: loaderReducer,
-  userData: userDataReducer 
+  userData: userDataReducer,
+  balanceData: balanceDataReducer
 });
 
 const persistConfig = {
